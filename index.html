@@ -11,94 +11,159 @@
             box-sizing: border-box;
         }
         
+        /* GitHub-style theme variables */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f6f8fa;
+            --text-primary: #24292f;
+            --text-secondary: #57606a;
+            --border-color: #d0d7de;
+            --link-color: #0969da;
+            --link-hover: #1f6feb;
+            --code-bg: #f6f8fa;
+            --card-shadow: 0 1px 0 rgba(27, 31, 36, 0.04);
+        }
+        
+        /* Dark theme */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #0d1117;
+                --bg-secondary: #161b22;
+                --text-primary: #c9d1d9;
+                --text-secondary: #8b949e;
+                --border-color: #30363d;
+                --link-color: #58a6ff;
+                --link-hover: #79c0ff;
+                --code-bg: #161b22;
+                --card-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            font-size: 14px;
         }
         
         .container {
-            max-width: 900px;
+            max-width: 1012px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px 24px;
         }
         
         .card {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: var(--bg-primary);
+            border-radius: 6px;
+            padding: 32px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
         }
         
         h1 {
-            color: #FF66CC;
             font-size: 32px;
-            margin-bottom: 10px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
         
         .last-updated {
-            color: #666;
-            font-size: 14px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
         }
         
         h2 {
-            color: #444;
             font-size: 20px;
-            margin: 25px 0 15px 0;
+            font-weight: 600;
+            margin: 32px 0 16px 0;
             padding-bottom: 8px;
-            border-bottom: 2px solid #FF66CC;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        h2:first-of-type {
+            margin-top: 0;
         }
         
         p {
-            margin-bottom: 15px;
-            color: #555;
+            margin-bottom: 16px;
+            color: var(--text-primary);
         }
         
         ul {
-            margin: 15px 0 15px 30px;
+            margin: 16px 0 16px 24px;
         }
         
         li {
             margin-bottom: 8px;
-            color: #555;
+            color: var(--text-primary);
+        }
+        
+        li strong {
+            color: var(--text-primary);
+            font-weight: 600;
         }
         
         .highlight {
-            background: #f9f0f5;
-            padding: 15px;
-            border-radius: 8px;
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--link-color);
+            padding: 16px;
+            border-radius: 6px;
             margin: 20px 0;
         }
         
         .contact {
-            background: #f0f0f0;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
+            background: var(--bg-secondary);
+            padding: 24px;
+            border-radius: 6px;
+            margin-top: 32px;
             text-align: center;
+            border: 1px solid var(--border-color);
         }
         
         a {
-            color: #FF66CC;
+            color: var(--link-color);
             text-decoration: none;
         }
         
         a:hover {
             text-decoration: underline;
+            color: var(--link-hover);
         }
         
         footer {
             text-align: center;
-            margin-top: 30px;
-            color: #888;
-            font-size: 13px;
+            margin-top: 32px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
         }
         
-        @media (max-width: 600px) {
+        code {
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+            font-size: 12px;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 24px 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
             .card {
                 padding: 20px;
             }
@@ -109,14 +174,28 @@
                 font-size: 18px;
             }
         }
+        
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .card {
+                border: none;
+                padding: 0;
+            }
+            .contact, .highlight {
+                break-inside: avoid;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <h1>🔒 Privacy Policy</h1>
+            <h1>Privacy Policy</h1>
             <div class="last-updated">
-                <strong>Zing App</strong> | Last updated: March 31, 2026
+                <strong>Zing</strong> • Last updated: March 31, 2026
             </div>
             
             <p>Zing ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application.</p>
@@ -160,6 +239,7 @@
                 <li><strong>Cloudinary:</strong> Media storage, processing, and delivery</li>
                 <li><strong>Google Generative AI:</strong> Gemini chat features</li>
             </ul>
+            
             <div class="highlight">
                 <p>📌 <strong>Note:</strong> These third-party services have their own privacy policies. We encourage you to review them.</p>
             </div>
@@ -182,7 +262,7 @@
                 <li>Control notification preferences in app settings</li>
                 <li>Revoke permissions in your device settings</li>
             </ul>
-            <p>To delete your account, go to Settings → Account → Delete Account.</p>
+            <p>To delete your account, go to <code>Settings → Account → Delete Account</code>.</p>
             
             <h2>9. International Data Transfers</h2>
             <p>Your information may be transferred to and maintained on servers located outside your country. By using Zing, you consent to this transfer.</p>
@@ -191,13 +271,13 @@
             <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy in the app and updating the "last updated" date. You are advised to review this policy periodically.</p>
             
             <div class="contact">
-    <strong>📧 Contact Us</strong><br>
-    If you have questions about this Privacy Policy, contact us at:<br>
-    <a href="mailto:clipixsup@gmail.com">clipixsup@gmail.com</a>
-</div>
+                <strong>📧 Contact Us</strong><br>
+                If you have questions about this Privacy Policy, contact us at:<br>
+                <a href="mailto:clipixsup@gmail.com">clipixsup@gmail.com</a>
+            </div>
             
             <footer>
-                Zing - Connect, Share, and Create
+                © 2026 Zing. All rights reserved.
             </footer>
         </div>
     </div>
