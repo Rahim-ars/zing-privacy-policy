@@ -11,7 +11,6 @@
             box-sizing: border-box;
         }
         
-        /* GitHub-style theme variables */
         :root {
             --bg-primary: #ffffff;
             --bg-secondary: #f6f8fa;
@@ -22,9 +21,9 @@
             --link-hover: #1f6feb;
             --code-bg: #f6f8fa;
             --card-shadow: 0 1px 0 rgba(27, 31, 36, 0.04);
+            --footer-border: #d0d7de;
         }
         
-        /* Dark theme */
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-primary: #0d1117;
@@ -36,6 +35,7 @@
                 --link-hover: #79c0ff;
                 --code-bg: #161b22;
                 --card-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+                --footer-border: #30363d;
             }
         }
         
@@ -134,13 +134,35 @@
             color: var(--link-hover);
         }
         
-        footer {
-            text-align: center;
-            margin-top: 32px;
+        /* Footer styling — GitHub theme sensitive */
+        .footer {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--footer-border);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
             color: var(--text-secondary);
-            font-size: 12px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border-color);
+            font-size: 13px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--link-color);
+            border-bottom-color: var(--link-color);
         }
         
         code {
@@ -159,7 +181,6 @@
             margin: 24px 0;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             .container {
                 padding: 16px;
@@ -173,9 +194,17 @@
             h2 {
                 font-size: 18px;
             }
+            .footer {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
         }
         
-        /* Print styles */
         @media print {
             body {
                 background: white;
@@ -276,14 +305,14 @@
                 <a href="mailto:clipixsup@gmail.com">clipixsup@gmail.com</a>
             </div>
             
-           <div class="footer">
+            <div class="footer">
                 <div>© 2026 Zing · All rights reserved</div>
                 <div class="footer-links">
-                <a href="https://rahim-ars.github.io/zing-policies/">Child Safety Standards</a>
-                <a href="https://rahim-ars.github.io/zing-privacy-policy/">Privacy Policy</a>
-                <a href="https://rahim-ars.github.io/zing-policies/terms.html">Terms of Service</a>
-           </div>
-         </div>
+                    <a href="https://rahim-ars.github.io/zing-policies/">Child Safety Standards</a>
+                    <a href="https://rahim-ars.github.io/zing-privacy-policy/">Privacy Policy</a>
+                    <a href="https://rahim-ars.github.io/zing-policies/terms.html">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
